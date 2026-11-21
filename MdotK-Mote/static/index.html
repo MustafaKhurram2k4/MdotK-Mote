@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#101014"><link rel="manifest" href="/static/manifest.json"><link rel="stylesheet" href="/static/styles.css"><title>Mote Remote</title></head>
+<body><div id="app" class="app">
+<header class="topbar"><img class="brand" src="/static/assets/SVGs/Trade Mark Logo.svg" alt="Mote"><button class="icon-btn" id="settings-open" aria-label="Settings"><img src="/static/assets/SVGs/Settings Button.svg"></button></header>
+<div class="connection"><div class="green-leds" id="leds"></div><span id="connection-text">Not paired</span><button id="disconnect" class="text-button" hidden>Disconnect</button><button id="sound-toggle" class="text-button" title="Toggle sound">Sound on</button></div>
+<section class="pair-screen" id="pair-screen"><div class="pair-card"><h1>Connect to Mote</h1><p>Enter the secret token saved on your PC, then choose a device slot.</p><input id="token-input" type="password" autocomplete="off" placeholder="Secret token"><button class="text-button" id="token-show">Show</button><div class="slot-select" id="pair-slots"></div><button class="primary" id="pair-btn">Pair phone</button><p class="hint" id="pair-error"></p></div></section>
+<main id="remote-view" hidden><div class="device-bar"><img src="/static/assets/SVGs/select device.svg" alt="Devices"><div id="device-slots"></div></div>
+<section class="launcher-wrap"><div class="launchers" id="launchers"></div></section><section class="stream-wrap"><div class="stream-pills" id="streams"></div></section>
+<section class="media-row"><button data-kind="media" data-action="previous" class="control"><span>⏮</span></button><button data-kind="media" data-action="play_pause" class="control play"><span>▶ / ❚❚</span></button><button data-kind="media" data-action="next" class="control"><span>⏭</span></button></section>
+<section class="volume-row"><button class="control" data-kind="media" data-action="volume_down">−</button><span>VOLUME</span><button class="control" data-kind="media" data-action="mute">⌁</button><button class="control" data-kind="media" data-action="volume_up">＋</button></section>
+<section class="system-row"><button data-kind="power" data-action="power" class="system"><img src="/static/assets/SVGs/Power Button.svg"></button><button data-kind="power" data-action="sleep" class="system"><img src="/static/assets/SVGs/Sleep Button.svg"></button><button data-kind="power" data-action="restart" class="system"><img src="/static/assets/SVGs/Restart Button.svg"></button></section>
+<section class="extra-row"><button class="control" id="mic">🎙</button><button class="control" id="keyboard">⌨</button><button class="control" id="controller-open"><img src="/static/assets/SVGs/MdotK - Mote/Controller Mode Button.svg" alt="Controller mode"></button></section>
+<div class="bottom-note" id="feedback"></div></main>
+<section class="controller-view" id="controller-view" hidden>
+  <button id="back-remote" class="controller-back" aria-label="Back to remote">‹ Remote</button>
+  <div class="controller-stage" id="controller-stage" aria-label="Mote virtual Xbox controller">
+    <img class="controller-art" src="/static/assets/MdotK - Game Controller XBox Like.png" alt="Mote controller layout">
+    <button class="hotspot shoulder-hit l2" data-game="L2" aria-label="Left trigger"></button>
+    <button class="hotspot shoulder-hit l1" data-game="L1" aria-label="Left bumper"></button>
+    <button class="hotspot shoulder-hit r1" data-game="R1" aria-label="Right bumper"></button>
+    <button class="hotspot shoulder-hit r2" data-game="R2" aria-label="Right trigger"></button>
+    <button class="hotspot face-hit y" data-game="Y" aria-label="Y"></button>
+    <button class="hotspot face-hit x" data-game="X" aria-label="X"></button>
+    <button class="hotspot face-hit b" data-game="B" aria-label="B"></button>
+    <button class="hotspot face-hit a" data-game="A" aria-label="A"></button>
+    <button class="hotspot center-hit" data-game="BACK" aria-label="Controller center button"></button>
+    <button class="hotspot dpad-hit up" data-kind="gamepad" data-action="DPAD_UP" aria-label="D-pad up"></button>
+    <button class="hotspot dpad-hit left" data-kind="gamepad" data-action="DPAD_LEFT" aria-label="D-pad left"></button>
+    <button class="hotspot dpad-hit down" data-kind="gamepad" data-action="DPAD_DOWN" aria-label="D-pad down"></button>
+    <button class="hotspot dpad-hit right" data-kind="gamepad" data-action="DPAD_RIGHT" aria-label="D-pad right"></button>
+    <div class="stick-hit left-stick" id="left-stick" aria-label="Left analog stick"></div>
+    <div class="stick-hit right-stick" id="right-stick" aria-label="Right analog stick"></div>
+  </div>
+  <div class="controller-rotate">Rotate your phone to landscape to use Mote Controller</div>
+</section>
+<section class="settings-overlay" id="settings-overlay" hidden><div class="settings-card"><div class="settings-header"><h2>Settings</h2><button class="icon-btn" id="settings-close">×</button></div><label>Device</label><div class="slot-select" id="settings-slots"></div><label>Theme</label><select id="theme"><option value="dark">Dark</option><option value="light">Light</option><option value="contrast">High contrast</option></select><label>Text size</label><select id="text-size"><option value="normal">Normal</option><option value="large">Large</option><option value="largest">Largest</option></select><label class="toggle-line">Narrator <input id="narrator" type="checkbox"></label><label class="toggle-line">High contrast <input id="contrast" type="checkbox"></label><button class="primary" id="settings-controller">Open controller</button><p class="hint">Remote actions are limited by permissions enabled on the desktop host.</p></div></section>
+</div><audio id="click-sound" src="/static/assets/sound/on-click sound.mp3" preload="auto"></audio><script type="module" src="/static/app.js"></script></body></html>
